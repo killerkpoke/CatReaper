@@ -1,0 +1,300 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://GameAssets/Sprites/UI/WenrexaUIMobileN4_OnlyPng/PNG/Button09.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=2]
+[ext_resource path="res://GameAssets/Sprites/UI/Fonts/MenuFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://GameAssets/Sprites/UI/WenrexaUIMobileN4_OnlyPng/PNG/Msg20.png" type="Texture" id=4]
+[ext_resource path="res://GameAssets/Sprites/UI/Fonts/hf-free-complete/equipment-pro-v1.1/EquipmentPro.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://GameAssets/Sprites/UI/WenrexaUIMobileN4_OnlyPng/PNG/Icon65.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 19
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "FocusInExit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel/ExitBtn:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 802.693, 505.275 ), Vector2( 760.267, 505.275 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "FocusInPlay"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel/PlayBtn:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 803.09, 394.681 ), Vector2( 755.414, 394.681 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "initAnim"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel/ExitBtn:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 3, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1022.7, 505.275 ), Vector2( 802.693, 505.275 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel/PlayBtn:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1022.7, 394.681 ), Vector2( 802.693, 394.681 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Panel/Title:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Panel/HSplitContainer:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -746.342, 161.069 ), Vector2( 13.0908, 161.069 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Panel/MusicBtn:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -117.107, 505 ), Vector2( 29, 505 ) ]
+}
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1024.0
+margin_bottom = 598.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayBtn" type="TextureButton" parent="Panel"]
+margin_left = 1022.34
+margin_top = 394.681
+margin_right = 1292.34
+margin_bottom = 484.681
+rect_scale = Vector2( 0.8, 0.8 )
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayLabel" type="Label" parent="Panel/PlayBtn"]
+margin_left = 119.178
+margin_top = 20.7027
+margin_right = 191.178
+margin_bottom = 68.7027
+custom_fonts/font = ExtResource( 3 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitBtn" type="TextureButton" parent="Panel"]
+margin_left = 1022.34
+margin_top = 505.275
+margin_right = 1292.34
+margin_bottom = 595.275
+rect_scale = Vector2( 0.8, 0.8 )
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitLabel" type="Label" parent="Panel/ExitBtn"]
+margin_left = 119.178
+margin_top = 20.7027
+margin_right = 191.178
+margin_bottom = 68.7027
+custom_fonts/font = ExtResource( 3 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicBtn" type="TextureButton" parent="Panel"]
+margin_left = -116.866
+margin_top = 505.0
+margin_right = -12.8657
+margin_bottom = 595.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture_normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Panel"]
+margin_left = 362.555
+margin_top = 35.9188
+margin_right = 659.555
+margin_bottom = 107.919
+rect_scale = Vector2( 0.00810623, 0.00810623 )
+rect_pivot_offset = Vector2( 150, 30 )
+custom_fonts/font = SubResource( 1 )
+text = "Cat Reaper"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Panel"]
+margin_left = -746.342
+margin_top = 161.069
+margin_right = 265.658
+margin_bottom = 550.069
+rect_scale = Vector2( 0.7, 0.7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditBox" type="TextureRect" parent="Panel/HSplitContainer"]
+margin_right = 500.0
+margin_bottom = 389.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditLabel" type="Label" parent="Panel/HSplitContainer/CreditBox"]
+margin_left = 183.948
+margin_top = 13.8591
+margin_right = 312.948
+margin_bottom = 61.8591
+custom_fonts/font = ExtResource( 3 )
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditTextArea" type="Label" parent="Panel/HSplitContainer/CreditBox"]
+margin_left = 21.0
+margin_top = 82.0
+margin_right = 475.0
+margin_bottom = 367.0
+custom_fonts/font = SubResource( 2 )
+text = "Assets:
+
+Pipoya - pipoya-free-rpg-character-sprites-nekonin
+Wenrexa - UI elements
+somepx - humble-fonts-free
+CraftPix.net - free-scrolling-city-backgrounds-pixel-art
+Chafmere - 2d Platformer Character Controller for Godot
+MariaParraGames - free-retro-city-assetpack
+ScartKT - free-ak-47-game-icon
+simon13666 - sound-effect-starter-pack
+Sebaravila - fps-industrial-game-music-pack
+JAR Incorporated. - heart-sprite-2d-pack01"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlBox" type="TextureRect" parent="Panel/HSplitContainer"]
+margin_left = 512.0
+margin_right = 1012.0
+margin_bottom = 389.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlLabel" type="Label" parent="Panel/HSplitContainer/ControlBox"]
+margin_left = 183.948
+margin_top = 13.8591
+margin_right = 312.948
+margin_bottom = 61.8591
+custom_fonts/font = ExtResource( 3 )
+text = "Controls"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlTextArea" type="Label" parent="Panel/HSplitContainer/ControlBox"]
+margin_left = 25.0
+margin_top = 98.0
+margin_right = 475.0
+margin_bottom = 367.0
+custom_fonts/font = SubResource( 3 )
+text = "A,D - Movement
+W, Space - Jump
+Left Mouse Button - Fire "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FocusInExit = SubResource( 4 )
+anims/FocusInPlay = SubResource( 5 )
+anims/initAnim = SubResource( 6 )
+[connection signal="mouse_entered" from="Panel/PlayBtn" to="." method="_on_PlayBtn_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/PlayBtn" to="." method="_on_PlayBtn_mouse_exited"]
+[connection signal="pressed" from="Panel/PlayBtn" to="." method="_on_PlayBtn_pressed"]
+[connection signal="mouse_entered" from="Panel/ExitBtn" to="." method="_on_ExitBtn_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/ExitBtn" to="." method="_on_ExitBtn_mouse_exited"]
+[connection signal="pressed" from="Panel/ExitBtn" to="." method="_on_ExitBtn_pressed"]
+[connection signal="pressed" from="Panel/MusicBtn" to="." method="_on_MusicBtn_pressed"]

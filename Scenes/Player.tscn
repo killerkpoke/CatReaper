@@ -1,0 +1,192 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Scripts/Controller.gd" type="Script" id=1]
+[ext_resource path="res://GameAssets/Sprites/Characters/PIPOYA FREE RPG Character Sprites NEKONIN/pipo-nekonin001.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/cameraMovement.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Weapon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GameAssets/Sprites/Characters/PIPOYA FREE RPG Character Sprites NEKONIN/pipo-nekonin019.png" type="Texture" id=5]
+[ext_resource path="res://GameAssets/Sprites/UI/Fonts/hf-free-complete/compass-pro-v1.1/CompassPro.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://GameAssets/Sprites/UI/Heart UI - JAR Inc/Life_UI_001.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/PauseControl.tscn" type="PackedScene" id=8]
+[ext_resource path="res://GameAssets/Sprites/UI/WenrexaUIMobileN4_OnlyPng/PNG/Icon61.png" type="Texture" id=9]
+[ext_resource path="res://GameAssets/Sound/SoundStarterPack/Starter Pack-Realist Sound Bank.23/Hit(Impact)/Hit3.wav" type="AudioStream" id=10]
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 32, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 64, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 32, 64, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 6 ) ],
+"loop": true,
+"name": "Run",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 8.85653, 11.2103 )
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 9.26539
+height = 2.78649
+
+[sub_resource type="DynamicFont" id=11]
+outline_size = 1
+outline_color = Color( 0.00784314, 0.00784314, 0.00784314, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 32, 64, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 500, 353 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 2.5, 2.5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "w"
+}
+JumpOn = true
+AttackOn = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 8 )
+animation = "Idle"
+playing = true
+
+[node name="Weapon" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 8.94836 )
+scale = Vector2( 0.07, 0.07 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3.02381 )
+shape = SubResource( 9 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 3.1498 )
+shape = SubResource( 10 )
+
+[node name="rayCastDown" type="RayCast2D" parent="."]
+cast_to = Vector2( 0, 15 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -40 )
+current = true
+script = ExtResource( 3 )
+
+[node name="ShiftTween" type="Tween" parent="Camera2D"]
+
+[node name="Panel" type="Panel" parent="Camera2D"]
+margin_left = -94.6861
+margin_top = -113.0
+margin_right = 112.314
+margin_bottom = -87.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheathDeath" type="Node2D" parent="Camera2D/Panel"]
+
+[node name="CDLabel" type="Label" parent="Camera2D/Panel/CheathDeath"]
+margin_left = 20.5902
+margin_top = 7.22145
+margin_right = 37.5902
+margin_bottom = 22.2215
+custom_fonts/font = SubResource( 11 )
+text = "x9"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CDSprite" type="AnimatedSprite" parent="Camera2D/Panel/CheathDeath"]
+position = Vector2( 12.4591, 12.8367 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 13 )
+
+[node name="Currency" type="Node2D" parent="Camera2D/Panel"]
+visible = false
+position = Vector2( 51.7243, 0 )
+
+[node name="CurrencyLabel" type="Label" parent="Camera2D/Panel/Currency"]
+margin_left = 20.5902
+margin_top = 7.22145
+margin_right = 37.5902
+margin_bottom = 22.2215
+custom_fonts/font = SubResource( 11 )
+text = "x999"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurrencySprite" type="Sprite" parent="Camera2D/Panel/Currency"]
+position = Vector2( 9.87766, 14.143 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 9 )
+
+[node name="Health" type="Node2D" parent="Camera2D/Panel"]
+position = Vector2( 50.9583, 0 )
+
+[node name="HealthSprites" type="AnimatedSprite" parent="Camera2D/Panel/Health"]
+position = Vector2( 90.1983, 12.713 )
+scale = Vector2( 0.05, 0.05 )
+frames = SubResource( 15 )
+
+[node name="HealthSprites2" type="AnimatedSprite" parent="Camera2D/Panel/Health"]
+position = Vector2( 113.216, 12.713 )
+scale = Vector2( 0.05, 0.05 )
+frames = SubResource( 15 )
+
+[node name="HealthSprites3" type="AnimatedSprite" parent="Camera2D/Panel/Health"]
+position = Vector2( 136.736, 12.713 )
+scale = Vector2( 0.05, 0.05 )
+frames = SubResource( 15 )
+
+[node name="PauseLayer" parent="Camera2D/Panel" instance=ExtResource( 8 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
